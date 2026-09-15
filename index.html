@@ -1,0 +1,3310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BUILD LAB — Learn. Build. Earn.</title>
+
+  <meta
+    name="description"
+    content="Join BUILD LAB and learn how to build websites and landing pages with AI, create real projects, and turn your work into a service."
+  />
+
+  <meta name="theme-color" content="#f4f3ef" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f4f3ef;
+      --paper: #ffffff;
+      --ink: #17211e;
+      --muted: #68716d;
+      --line: #dfe3dd;
+      --teal: #123f3a;
+      --teal-light: #dcebe5;
+      --orange: #f26b38;
+      --orange-dark: #d95425;
+      --cream: #fff8ef;
+      --shadow: 0 24px 70px rgba(18, 63, 58, 0.10);
+      --radius: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* BACKGROUND */
+
+    .background-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.18;
+    }
+
+    .glow-one {
+      background: #9ac9b8;
+      top: -180px;
+      left: -140px;
+    }
+
+    .glow-two {
+      background: #f6b58f;
+      right: -180px;
+      top: 500px;
+    }
+
+    .grid-background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(18, 63, 58, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 63, 58, 0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      padding: 22px 0;
+      position: relative;
+      z-index: 20;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      font-size: 1.2rem;
+    }
+
+    .logo-mark {
+      width: 31px;
+      height: 31px;
+      border-radius: 9px;
+      background: var(--teal);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+    }
+
+    .nav-label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-family: "DM Mono", monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-button {
+      background: var(--teal);
+      color: white;
+      padding: 11px 17px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .nav-button:hover {
+      background: #0b302c;
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 70px 0 110px;
+      position: relative;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.92fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--teal);
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 5px rgba(242, 107, 56, 0.10);
+    }
+
+    h1 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.075em;
+      font-weight: 800;
+      max-width: 700px;
+    }
+
+    h1 span {
+      color: var(--orange);
+    }
+
+    .hero-copy {
+      max-width: 570px;
+      margin-top: 27px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 15px 23px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: 0.25s ease;
+    }
+
+    .primary-button {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 12px 30px rgba(242, 107, 56, 0.22);
+    }
+
+    .primary-button:hover {
+      background: var(--orange-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 35px rgba(242, 107, 56, 0.28);
+    }
+
+    .secondary-button {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--teal);
+    }
+
+    .secondary-button:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      font-size: 0.78rem;
+      color: #8a928e;
+    }
+
+    /* 3D VISUAL */
+
+    .visual-wrap {
+      position: relative;
+      min-height: 490px;
+      perspective: 1300px;
+    }
+
+    .floating-label {
+      position: absolute;
+      z-index: 5;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(18,63,58,0.10);
+      box-shadow: 0 15px 40px rgba(18,63,58,0.10);
+      border-radius: 16px;
+      padding: 13px 15px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--teal);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .floating-label.one {
+      top: 30px;
+      right: 20px;
+    }
+
+    .floating-label.two {
+      bottom: 65px;
+      left: -10px;
+      animation-delay: 1.2s;
+    }
+
+    .floating-label small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .browser-scene {
+      position: absolute;
+      inset: 35px 0 0 0;
+      display: grid;
+      place-items: center;
+      transform-style: preserve-3d;
+      animation: sceneFloat 7s ease-in-out infinite;
+    }
+
+    .browser {
+      width: min(100%, 510px);
+      height: 355px;
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid rgba(18,63,58,0.13);
+      box-shadow:
+        0 45px 80px rgba(18,63,58,0.18),
+        0 15px 25px rgba(18,63,58,0.08);
+      overflow: hidden;
+      transform: rotateY(-12deg) rotateX(5deg) rotateZ(1deg);
+      transform-style: preserve-3d;
+    }
+
+    .browser-top {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 15px;
+      border-bottom: 1px solid #edf0eb;
+      background: #fbfcfa;
+    }
+
+    .browser-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d8ded8;
+    }
+
+    .browser-dot.orange {
+      background: #f1a078;
+    }
+
+    .address-bar {
+      margin-left: 8px;
+      flex: 1;
+      height: 22px;
+      border-radius: 6px;
+      background: #f0f2ee;
+      color: #a4aca6;
+      font-family: "DM Mono", monospace;
+      font-size: 0.54rem;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+    }
+
+    .browser-body {
+      height: calc(100% - 42px);
+      background:
+        radial-gradient(circle at 80% 10%, rgba(242,107,56,0.13), transparent 30%),
+        linear-gradient(135deg, #f8faf7, #e7f0ea);
+      position: relative;
+      padding: 31px;
+      overflow: hidden;
+    }
+
+    .browser-body::before {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -70px;
+      bottom: -80px;
+      border-radius: 50%;
+      border: 1px solid rgba(18,63,58,0.12);
+      box-shadow:
+        0 0 0 25px rgba(18,63,58,0.025),
+        0 0 0 50px rgba(18,63,58,0.025);
+    }
+
+    .mockup-tag {
+      display: inline-flex;
+      background: var(--teal);
+      color: white;
+      font-family: "DM Mono", monospace;
+      font-size: 0.58rem;
+      padding: 6px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+
+    .mockup-heading {
+      margin-top: 22px;
+      font-family: "Manrope", sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.08em;
+      font-weight: 800;
+      max-width: 270px;
+      color: var(--teal);
+    }
+
+    .mockup-heading span {
+      color: var(--orange);
+    }
+
+    .mockup-lines {
+      display: grid;
+      gap: 8px;
+      margin-top: 20px;
+      max-width: 240px;
+    }
+
+    .mockup-line {
+      height: 6px;
+      border-radius: 99px;
+      background: rgba(18,63,58,0.13);
+    }
+
+    .mockup-line.short {
+      width: 65%;
+    }
+
+    .mockup-button {
+      width: 105px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--orange);
+      margin-top: 22px;
+    }
+
+    .mockup-orbit {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(18,63,58,0.22);
+      border-radius: 50%;
+      right: 25px;
+      top: 65px;
+      transform: rotateX(65deg) rotateY(-15deg);
+    }
+
+    .mockup-orbit::before,
+    .mockup-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 20px rgba(242,107,56,0.35);
+    }
+
+    .mockup-orbit::before {
+      width: 13px;
+      height: 13px;
+      top: 4px;
+      left: 50%;
+    }
+
+    .mockup-orbit::after {
+      width: 8px;
+      height: 8px;
+      right: 5px;
+      bottom: 25px;
+      background: var(--teal);
+    }
+
+    .mockup-card {
+      position: absolute;
+      width: 125px;
+      height: 80px;
+      border-radius: 13px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(18,63,58,0.10);
+      box-shadow: 0 15px 30px rgba(18,63,58,0.08);
+      right: 32px;
+      bottom: 30px;
+      transform: translateZ(45px) rotate(-6deg);
+      padding: 13px;
+    }
+
+    .mockup-card-title {
+      font-family: "DM Mono", monospace;
+      font-size: 0.55rem;
+      color: var(--muted);
+    }
+
+    .mockup-card-number {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--teal);
+      margin-top: 8px;
+    }
+
+    .mockup-card-line {
+      width: 70%;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--orange);
+      margin-top: 5px;
+    }
+
+    /* TRUST STRIP */
+
+    .trust-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 23px 0;
+      margin-bottom: 90px;
+    }
+
+    .trust-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      color: #7d8781;
+      font-size: 0.78rem;
+      font-family: "DM Mono", monospace;
+      text-align: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-item strong {
+      color: var(--teal);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    /* GENERAL SECTIONS */
+
+    .section-intro {
+      text-align: center;
+      max-width: 680px;
+      margin: auto;
+    }
+
+    .section-kicker {
+      color: var(--orange);
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.04;
+      letter-spacing: -0.065em;
+      font-weight: 800;
+    }
+
+    .section-intro p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 17px;
+    }
+
+    /* PRICING */
+
+    .pricing-section {
+      padding: 30px 0 110px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 55px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.featured {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+      box-shadow: 0 30px 70px rgba(18,63,58,0.20);
+    }
+
+    .price-card.featured::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      right: -120px;
+      bottom: -120px;
+      box-shadow:
+        0 0 0 30px rgba(255,255,255,0.025),
+        0 0 0 60px rgba(255,255,255,0.025);
+      pointer-events: none;
+    }
+
+    .card-label {
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .featured .card-label {
+      color: #a8c5bc;
+    }
+
+    .price {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      line-height: 1;
+    }
+
+    .price-description {
+      color: var(--muted);
+      margin-top: 13px;
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .featured .price-description {
+      color: #b8ccc5;
+    }
+
+    .spot-box {
+      margin-top: 28px;
+      padding: 17px;
+      border-radius: 15px;
+      background: #f7f8f5;
+      border: 1px solid var(--line);
+    }
+
+    .featured .spot-box {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .spot-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .spot-top span:last-child {
+      color: var(--orange);
+      white-space: nowrap;
+    }
+
+    .progress {
+      height: 7px;
+      background: #e3e8e2;
+      border-radius: 99px;
+      margin-top: 13px;
+      overflow: hidden;
+    }
+
+    .featured .progress {
+      background: rgba(255,255,255,0.13);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 80%;
+      border-radius: inherit;
+      background: var(--orange);
+      transition: width 0.5s ease;
+    }
+
+    .spots-taken {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.5;
+    }
+
+    .featured .spots-taken {
+      color: #b8ccc5;
+    }
+
+    .price-button {
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    .normal-price {
+      background: #edf1ec;
+    }
+
+    .normal-price .price {
+      color: var(--teal);
+    }
+
+    /* PAYMENT */
+
+    .payment-section {
+      padding: 0 0 110px;
+    }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 25px;
+      align-items: stretch;
+      margin-top: 55px;
+    }
+
+    .payment-intro {
+      background: var(--teal);
+      color: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .payment-intro::before {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      right: -120px;
+      top: -100px;
+      box-shadow:
+        0 0 0 25px rgba(255,255,255,0.025),
+        0 0 0 50px rgba(255,255,255,0.025);
+    }
+
+    .payment-intro h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 2.1rem;
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .payment-intro p {
+      color: #b9ccc5;
+      line-height: 1.7;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .payment-steps {
+      display: grid;
+      gap: 20px;
+      margin-top: 38px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .payment-step {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      min-width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      color: var(--orange);
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .payment-step strong {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .payment-step span {
+      display: block;
+      margin-top: 4px;
+      color: #9db7ad;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .account-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+    }
+
+    .account-card h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: -0.05em;
+    }
+
+    .account-card > p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .account-details {
+      display: grid;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .account-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 16px 17px;
+      border-radius: 13px;
+      background: #f7f8f5;
+      border: 1px solid #e9ede7;
+    }
+
+    .account-row small {
+      color: #7b857f;
+      display: block;
+      font-size: 0.68rem;
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+
+    .account-row strong {
+      font-size: 0.9rem;
+      word-break: break-word;
+    }
+
+    .copy-account {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--teal);
+      border-radius: 9px;
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .copy-account:hover {
+      border-color: var(--teal);
+    }
+
+    .payment-warning {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 23px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #fff6ec;
+      color: #9b5b35;
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+
+    .payment-button {
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    /* OFFER */
+
+    .offer-section {
+      padding: 0 0 75px;
+    }
+
+    .offer-card {
+      background: #e8eee8;
+      border: 1px solid #d6e0d7;
+      border-radius: 30px;
+      padding: 55px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-card::after {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      border: 1px solid rgba(18,63,58,0.08);
+      right: -130px;
+      bottom: -170px;
+      box-shadow:
+        0 0 0 30px rgba(18,63,58,0.025),
+        0 0 0 60px rgba(18,63,58,0.025);
+      pointer-events: none;
+    }
+
+    .offer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-header p {
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    .offer-badge {
+      background: var(--orange);
+      color: white;
+      border-radius: 999px;
+      padding: 11px 15px;
+      font-size: 0.7rem;
+      font-family: "DM Mono", monospace;
+      white-space: nowrap;
+    }
+
+    .curriculum-preview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+      margin-top: 38px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .curriculum-mini {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(18,63,58,0.08);
+      border-radius: 16px;
+      padding: 20px;
+      min-height: 150px;
+    }
+
+    .curriculum-mini-number {
+      font-family: "DM Mono", monospace;
+      font-size: 0.65rem;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .curriculum-mini h4 {
+      margin-top: 25px;
+      font-family: "Manrope", sans-serif;
+      letter-spacing: -0.04em;
+      font-size: 1rem;
+    }
+
+    .curriculum-mini p {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    .offer-button-wrap {
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* PROJECT SHOWCASE */
+
+    .showcase-section {
+      padding: 35px 0 110px;
+    }
+
+    .showcase-card {
+      background: var(--teal);
+      color: white;
+      border-radius: 30px;
+      padding: 55px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .showcase-card::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.09);
+      right: -180px;
+      top: -190px;
+      box-shadow:
+        0 0 0 35px rgba(255,255,255,0.025),
+        0 0 0 70px rgba(255,255,255,0.018);
+      pointer-events: none;
+    }
+
+    .showcase-header {
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .showcase-header .section-kicker {
+      color: #f7a37f;
+    }
+
+    .showcase-header h2 {
+      color: white;
+    }
+
+    .showcase-header p {
+      color: #b9ccc5;
+      line-height: 1.7;
+      margin-top: 17px;
+      max-width: 620px;
+    }
+
+    .showcase-image-wrap {
+      margin-top: 38px;
+      position: relative;
+      z-index: 1;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #edf1ec;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow:
+        0 30px 70px rgba(0,0,0,0.18),
+        0 10px 25px rgba(0,0,0,0.10);
+    }
+
+    .showcase-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 280px;
+      max-height: 650px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .showcase-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .showcase-point {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 15px;
+      padding: 18px;
+    }
+
+    .showcase-point-number {
+      color: var(--orange);
+      font-family: "DM Mono", monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
+    .showcase-point strong {
+      display: block;
+      margin-top: 10px;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.92rem;
+    }
+
+    .showcase-point p {
+      color: #9db7ad;
+      font-size: 0.75rem;
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+
+    /* FAQ */
+
+    .faq-section {
+      padding: 0 0 110px;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .faq-left h2 {
+      margin-top: 8px;
+    }
+
+    .faq-left p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 17px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      border: none;
+      background: transparent;
+      padding: 20px;
+      text-align: left;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .faq-icon {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--orange);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 20px 20px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.85rem;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* QUESTIONS */
+
+    .question-section {
+      padding: 0 0 110px;
+    }
+
+    .question-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 55px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .question-card h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+    }
+
+    .question-card .description {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 17px;
+    }
+
+    .question-points {
+      display: grid;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .question-point {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .check {
+      width: 21px;
+      height: 21px;
+      background: var(--teal-light);
+      color: var(--teal);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .question-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field-group label {
+      color: var(--teal);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fafbf9;
+      padding: 14px 15px;
+      outline: none;
+      color: var(--ink);
+      transition: 0.2s ease;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      border-color: var(--teal);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(18,63,58,0.06);
+    }
+
+    .field-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-note {
+      color: #89928c;
+      font-size: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .form-button {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 0 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      color: #89928c;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .footer-copy strong {
+      color: var(--teal);
+    }
+
+    .footer-code {
+      font-family: "DM Mono", monospace;
+      color: #9ba49e;
+      font-size: 0.68rem;
+    }
+
+    /* MODAL */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 27, 24, 0.65);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal {
+      width: min(850px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--bg);
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 35px 100px rgba(0,0,0,0.25);
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0);
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 30px 32px 20px;
+      position: sticky;
+      top: 0;
+      background: rgba(244,243,239,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 2;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-top h2 {
+      font-size: 2rem;
+    }
+
+    .modal-top p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+
+    .close-modal {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--teal);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .modal-content {
+      padding: 25px 32px 35px;
+    }
+
+    .curriculum-block {
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .curriculum-block:last-child {
+      border-bottom: none;
+    }
+
+    .curriculum-block-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .curriculum-number {
+      color: var(--orange);
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      padding-top: 4px;
+      white-space: nowrap;
+    }
+
+    .curriculum-block h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+    }
+
+    .curriculum-block > p {
+      color: var(--muted);
+      margin: 9px 0 0 55px;
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .curriculum-block ul {
+      margin: 18px 0 0 55px;
+      display: grid;
+      gap: 9px;
+      list-style: none;
+    }
+
+    .curriculum-block li {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .curriculum-block li::before {
+      content: "↗";
+      color: var(--orange);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    .bonus-heading {
+      color: var(--orange);
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 15px;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .bonus-item {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .bonus-item h4 {
+      font-family: "Manrope", sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: -0.02em;
+    }
+
+    .bonus-item p {
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 120px);
+      background: var(--teal);
+      color: white;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-size: 0.78rem;
+      box-shadow: 0 15px 40px rgba(18,63,58,0.25);
+      z-index: 200;
+      opacity: 0;
+      transition: 0.3s ease;
+      text-align: center;
+      max-width: calc(100% - 40px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes sceneFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(0.5deg);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-layout,
+      .payment-grid,
+      .question-card,
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+
+      .visual-wrap {
+        min-height: 420px;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .curriculum-preview {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .faq-layout {
+        gap: 35px;
+      }
+
+      .question-card {
+        gap: 35px;
+      }
+
+      .offer-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .showcase-bottom {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      nav {
+        padding: 16px 0;
+      }
+
+      .nav-label {
+        display: none;
+      }
+
+      .nav-button {
+        padding: 9px 13px;
+        font-size: 0.72rem;
+      }
+
+      .hero {
+        padding: 45px 0 70px;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 14vw, 4.2rem);
+      }
+
+      .hero-copy {
+        font-size: 0.98rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .primary-button,
+      .secondary-button {
+        width: 100%;
+      }
+
+      .visual-wrap {
+        min-height: 335px;
+        margin-top: 15px;
+      }
+
+      .browser-scene {
+        inset: 20px -20px 0;
+      }
+
+      .browser {
+        height: 270px;
+        border-radius: 15px;
+        transform: rotateY(-8deg) rotateX(3deg);
+      }
+
+      .browser-top {
+        height: 32px;
+        padding: 0 10px;
+      }
+
+      .browser-dot {
+        width: 6px;
+        height: 6px;
+      }
+
+      .address-bar {
+        height: 17px;
+        font-size: 0.42rem;
+      }
+
+      .browser-body {
+        height: calc(100% - 32px);
+        padding: 20px;
+      }
+
+      .mockup-heading {
+        font-size: 1.45rem;
+        max-width: 190px;
+        margin-top: 15px;
+      }
+
+      .mockup-lines {
+        margin-top: 13px;
+        gap: 5px;
+      }
+
+      .mockup-line {
+        height: 4px;
+      }
+
+      .mockup-button {
+        height: 24px;
+        width: 85px;
+        margin-top: 14px;
+      }
+
+      .mockup-orbit {
+        width: 120px;
+        height: 120px;
+        right: 10px;
+        top: 45px;
+      }
+
+      .mockup-card {
+        width: 100px;
+        height: 65px;
+        right: 15px;
+        bottom: 18px;
+        padding: 10px;
+      }
+
+      .mockup-card-number {
+        font-size: 1rem;
+        margin-top: 5px;
+      }
+
+      .floating-label {
+        font-size: 0.62rem;
+        padding: 10px 11px;
+      }
+
+      .floating-label.one {
+        top: 0;
+        right: -2px;
+      }
+
+      .floating-label.two {
+        bottom: 20px;
+        left: -2px;
+      }
+
+      .trust-strip {
+        margin-bottom: 65px;
+      }
+
+      .trust-inner {
+        gap: 15px;
+        font-size: 0.66rem;
+      }
+
+      .pricing-section,
+      .payment-section,
+      .offer-section,
+      .showcase-section,
+      .faq-section,
+      .question-section {
+        padding-bottom: 70px;
+      }
+
+      .price-card {
+        padding: 27px;
+      }
+
+      .price-card.featured {
+        order: -1;
+      }
+
+      .payment-intro,
+      .account-card {
+        padding: 27px;
+      }
+
+      .account-row {
+        align-items: flex-start;
+      }
+
+      .account-row strong {
+        font-size: 0.78rem;
+      }
+
+      .copy-account {
+        font-size: 0.65rem;
+        padding: 7px 8px;
+      }
+
+      .offer-card {
+        padding: 28px 20px;
+        border-radius: 23px;
+      }
+
+      .curriculum-preview {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .curriculum-mini {
+        padding: 15px;
+        min-height: 135px;
+      }
+
+      .curriculum-mini h4 {
+        margin-top: 18px;
+        font-size: 0.88rem;
+      }
+
+      .curriculum-mini p {
+        font-size: 0.7rem;
+      }
+
+      .showcase-card {
+        padding: 28px 20px;
+        border-radius: 23px;
+      }
+
+      .showcase-image-wrap {
+        margin-top: 28px;
+        border-radius: 16px;
+      }
+
+      .showcase-image {
+        min-height: 210px;
+      }
+
+      .showcase-point {
+        padding: 15px;
+      }
+
+      .question-card {
+        padding: 28px 20px;
+        border-radius: 23px;
+      }
+
+      .modal-top {
+        padding: 23px 20px 17px;
+      }
+
+      .modal-top h2 {
+        font-size: 1.65rem;
+      }
+
+      .modal-content {
+        padding: 15px 20px 25px;
+      }
+
+      .curriculum-block > p,
+      .curriculum-block ul {
+        margin-left: 0;
+      }
+
+      .curriculum-block-head {
+        gap: 10px;
+      }
+
+      .curriculum-block h3 {
+        font-size: 1.15rem;
+      }
+
+      .bonus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background-glow">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+  </div>
+
+  <div class="grid-background"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        <span class="logo-mark">BL</span>
+        BUILD LAB
+      </a>
+
+      <span class="nav-label">LEARN. BUILD. EARN.</span>
+
+      <a href="#payment" class="nav-button">Join Now ↗</a>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+      <div class="container hero-layout">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            BUILD LAB / EARLY ACCESS
+          </div>
+
+          <h1>
+            Learn to build.<br />
+            Build to <span>earn.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Learn how to build websites and landing pages with AI,
+            create real projects, build a portfolio, and turn your work
+            into a service people can pay for.
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#payment" class="primary-button">
+              Join BUILD LAB <span>↗</span>
+            </a>
+
+            <button
+              class="secondary-button"
+              onclick="scrollToQuestions()"
+            >
+              Have Questions? <span>↓</span>
+            </button>
+
+          </div>
+
+          <p class="hero-note">
+            First 10 spots: ₦5,000 each.
+          </p>
+
+        </div>
+
+
+        <!-- 3D VISUAL -->
+        <div class="visual-wrap">
+
+          <div class="floating-label one">
+            AI + WEB BUILDING
+            <small>From idea to real project</small>
+          </div>
+
+          <div class="floating-label two">
+            YOUR NEXT OPPORTUNITY
+            <small>Starts with what you can build</small>
+          </div>
+
+          <div class="browser-scene">
+
+            <div class="browser">
+
+              <div class="browser-top">
+                <span class="browser-dot orange"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+
+                <div class="address-bar">
+                  buildlab / portfolio / project
+                </div>
+              </div>
+
+              <div class="browser-body">
+
+                <span class="mockup-tag">BUILD LAB</span>
+
+                <div class="mockup-heading">
+                  Build things<br />
+                  <span>people need.</span>
+                </div>
+
+                <div class="mockup-lines">
+                  <div class="mockup-line"></div>
+                  <div class="mockup-line"></div>
+                  <div class="mockup-line short"></div>
+                </div>
+
+                <div class="mockup-button"></div>
+
+                <div class="mockup-orbit"></div>
+
+                <div class="mockup-card">
+                  <div class="mockup-card-title">PORTFOLIO</div>
+                  <div class="mockup-card-number">03+</div>
+                  <div class="mockup-card-line"></div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TRUST STRIP -->
+    <section class="trust-strip">
+
+      <div class="container trust-inner">
+
+        <div class="trust-item">
+          <strong>01</strong> Learn with AI
+        </div>
+
+        <div class="trust-item">
+          <strong>02</strong> Build real projects
+        </div>
+
+        <div class="trust-item">
+          <strong>03</strong> Create a portfolio
+        </div>
+
+        <div class="trust-item">
+          <strong>04</strong> Find opportunities
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRICING -->
+    <section class="pricing-section">
+
+      <div class="container">
+
+        <div class="section-intro">
+
+          <div class="section-kicker">BUILD LAB ACCESS</div>
+
+          <h2>
+            Choose your<br />
+            access.
+          </h2>
+
+          <p>
+            First 10 confirmed students pay ₦5,000.
+            After that, the price becomes ₦10,000.
+          </p>
+
+        </div>
+
+
+        <div class="pricing-grid">
+
+          <!-- EARLY ACCESS -->
+
+          <div class="price-card featured">
+
+            <div class="card-label">
+              Current early-bird price
+            </div>
+
+            <div class="price">
+              ₦5,000
+            </div>
+
+            <p class="price-description">
+              Available for the first 10 confirmed students.
+            </p>
+
+            <div class="spot-box">
+
+              <div class="spot-top">
+                <span id="spotsText">2 discounted spots remaining</span>
+                <span id="spotStatus">8 TAKEN</span>
+              </div>
+
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  id="progressBar"
+                  style="width: 20%;"
+                ></div>
+              </div>
+
+              <p class="spots-taken" id="spotsTaken">
+                8 people have already joined.
+              </p>
+
+            </div>
+
+            <a href="#payment" class="primary-button price-button">
+              Join at ₦5,000 <span>↗</span>
+            </a>
+
+          </div>
+
+
+          <!-- REGULAR PRICE -->
+
+          <div class="price-card normal-price">
+
+            <div class="card-label">
+              Regular price
+            </div>
+
+            <div class="price">
+              ₦10,000
+            </div>
+
+            <p class="price-description">
+              This becomes the price after all 10 early-bird spots are filled.
+            </p>
+
+            <div class="spot-box">
+
+              <div class="spot-top">
+                <span>After early access</span>
+                <span>REGULAR PRICE</span>
+              </div>
+
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 100%; background: #123f3a;"
+                ></div>
+              </div>
+
+            </div>
+
+            <button
+              class="secondary-button price-button"
+              onclick="openOffer()"
+            >
+              See What You’ll Learn <span>↗</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PAYMENT -->
+    <section class="payment-section" id="payment">
+
+      <div class="container">
+
+        <div class="section-intro">
+
+          <div class="section-kicker">Secure your place</div>
+
+          <h2>
+            Join BUILD LAB.
+          </h2>
+
+          <p>
+            Pay ₦5,000, then send your confirmation on WhatsApp.
+          </p>
+
+        </div>
+
+
+        <div class="payment-grid">
+
+          <!-- PAYMENT STEPS -->
+
+          <div class="payment-intro">
+
+            <h3>
+              Your next step is simple.
+            </h3>
+
+            <p>
+              Pay, confirm your spot, and get started.
+            </p>
+
+            <div class="payment-steps">
+
+              <div class="payment-step">
+
+                <div class="step-number">01</div>
+
+                <div>
+                  <strong>Make payment</strong>
+                  <span>
+                    Pay ₦5,000 using the account details.
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="payment-step">
+
+                <div class="step-number">02</div>
+
+                <div>
+                  <strong>Send confirmation</strong>
+                  <span>
+                    Send your payment confirmation on WhatsApp.
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="payment-step">
+
+                <div class="step-number">03</div>
+
+                <div>
+                  <strong>Get access</strong>
+                  <span>
+                    Your BUILD LAB access details will be sent to you.
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ACCOUNT DETAILS -->
+
+          <div class="account-card">
+
+            <h3>Make payment</h3>
+
+            <p>
+              First 10 confirmed students:
+              <strong>₦5,000</strong>
+            </p>
+
+            <div class="account-details">
+
+              <div class="account-row">
+
+                <div>
+                  <small>Bank</small>
+                  <strong>Kuda</strong>
+                </div>
+
+              </div>
+
+
+              <div class="account-row">
+
+                <div>
+                  <small>Account name</small>
+                  <strong>Dominic Otaigbe osaghale</strong>
+                </div>
+
+              </div>
+
+
+              <div class="account-row">
+
+                <div>
+                  <small>Account number</small>
+                  <strong id="accountNumber">2069091355</strong>
+                </div>
+
+                <button
+                  class="copy-account"
+                  onclick="copyAccount()"
+                >
+                  Copy
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="payment-warning">
+
+              <span>ⓘ</span>
+
+              <span>
+                After payment, click the button below and send your confirmation
+                message on WhatsApp.
+              </span>
+
+            </div>
+
+
+            <a
+              class="primary-button payment-button"
+              id="paymentWhatsApp"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              I've Made Payment <span>↗</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- OFFER PREVIEW -->
+    <section class="offer-section">
+
+      <div class="container">
+
+        <div class="offer-card">
+
+          <div class="offer-header">
+
+            <div>
+
+              <div class="section-kicker">Inside BUILD LAB</div>
+
+              <h2>
+                What you'll<br />
+                learn.
+              </h2>
+
+              <p>
+                Build real projects, create a portfolio, offer your work as a
+                service, and learn how to look for opportunities.
+              </p>
+
+            </div>
+
+            <div class="offer-badge">
+              FULL CURRICULUM
+            </div>
+
+          </div>
+
+
+          <div class="curriculum-preview">
+
+            <div class="curriculum-mini">
+              <div class="curriculum-mini-number">01</div>
+              <h4>BUILD</h4>
+              <p>
+                Learn how to use AI to build websites and landing pages.
+              </p>
+            </div>
+
+
+            <div class="curriculum-mini">
+              <div class="curriculum-mini-number">02</div>
+              <h4>CREATE</h4>
+              <p>
+                Build real projects and use them to create your portfolio.
+              </p>
+            </div>
+
+
+            <div class="curriculum-mini">
+              <div class="curriculum-mini-number">03</div>
+              <h4>TURN IT INTO A SERVICE</h4>
+              <p>
+                Learn how to turn what you can build into a service.
+              </p>
+            </div>
+
+
+            <div class="curriculum-mini">
+              <div class="curriculum-mini-number">04</div>
+              <h4>FIND OPPORTUNITIES</h4>
+              <p>
+                Learn how to find people who need your service.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="offer-button-wrap">
+
+            <button
+              class="primary-button"
+              onclick="openOffer()"
+            >
+              View Full Offer <span>↗</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJECT SHOWCASE -->
+    <section class="showcase-section">
+
+      <div class="container">
+
+        <div class="showcase-card">
+
+          <div class="showcase-header">
+
+            <div class="section-kicker">
+              WHAT YOU CAN BUILD
+            </div>
+
+            <h2>
+              Don't just learn.<br />
+              <span style="color: var(--orange);">Build real things.</span>
+            </h2>
+
+            <p>
+              BUILD LAB is designed around practical projects. You will learn
+              how to take an idea, turn it into a real website or landing page,
+              and use the work you create to build your portfolio.
+            </p>
+
+          </div>
+
+
+          <div class="showcase-image-wrap">
+
+            <img
+              src="1000072991.jpg"
+              alt="Screenshot of a WhatsApp conversation showing a potential client inquiry"
+              class="showcase-image"
+            />
+
+          </div>
+
+
+          <div class="showcase-bottom">
+
+            <div class="showcase-point">
+
+              <div class="showcase-point-number">
+                01
+              </div>
+
+              <strong>
+                Build for your portfolio
+              </strong>
+
+              <p>
+                Create projects that show people what you can actually do.
+              </p>
+
+            </div>
+
+
+            <div class="showcase-point">
+
+              <div class="showcase-point-number">
+                02
+              </div>
+
+              <strong>
+                Build for real businesses
+              </strong>
+
+              <p>
+                Understand how your work can solve problems for businesses.
+              </p>
+
+            </div>
+
+
+            <div class="showcase-point">
+
+              <div class="showcase-point-number">
+                03
+              </div>
+
+              <strong>
+                Turn projects into opportunities
+              </strong>
+
+              <p>
+                Use your work to start conversations and look for paid projects.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="faq-section">
+
+      <div class="container faq-layout">
+
+        <div class="faq-left">
+
+          <div class="section-kicker">Before you join</div>
+
+          <h2>
+            Questions<br />
+            answered.
+          </h2>
+
+          <p>
+            Everything you need to know before joining BUILD LAB.
+          </p>
+
+        </div>
+
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+
+              Do I need to know how to code?
+
+              <span class="faq-icon">+</span>
+
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                No. You can start without prior coding experience. You will
+                learn how to use AI to help you build while understanding the
+                basics behind what you create.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+
+              Do I need a laptop?
+
+              <span class="faq-icon">+</span>
+
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                A laptop can be useful, but the learning process is designed
+                around AI and practical tools available to you.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+
+              Will I get clients immediately?
+
+              <span class="faq-icon">+</span>
+
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                No one can guarantee that. BUILD LAB teaches you how to build,
+                create a portfolio, package your work, approach potential
+                clients, and look for opportunities.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+
+              What if I already have another skill?
+
+              <span class="faq-icon">+</span>
+
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                You can combine website building with design, video, branding,
+                social media, marketing, or other skills you already have.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+
+              What happens after I make payment?
+
+              <span class="faq-icon">+</span>
+
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Send your payment confirmation through WhatsApp. Your payment
+                will be reviewed and your access details will be shared after
+                confirmation.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUESTION FORM -->
+    <section class="question-section" id="questions">
+
+      <div class="container">
+
+        <div class="question-card">
+
+          <div>
+
+            <div class="section-kicker">Need clarity first?</div>
+
+            <h2>
+              Ask your<br />
+              question.
+            </h2>
+
+            <p class="description">
+              Ask anything about BUILD LAB before you make payment.
+            </p>
+
+            <div class="question-points">
+
+              <div class="question-point">
+                <span class="check">✓</span>
+                Ask directly before payment.
+              </div>
+
+              <div class="question-point">
+                <span class="check">✓</span>
+                Get a response from Dominic.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <form class="question-form" id="questionForm">
+
+            <div class="field-group">
+
+              <label for="name">Your name</label>
+
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+              />
+
+            </div>
+
+
+            <div class="field-group">
+
+              <label for="phone">Your WhatsApp number</label>
+
+              <input
+                type="tel"
+                id="phone"
+                placeholder="e.g. 08012345678"
+                required
+              />
+
+            </div>
+
+
+            <div class="field-group">
+
+              <label for="question">Your question</label>
+
+              <textarea
+                id="question"
+                placeholder="What would you like to know about BUILD LAB?"
+                required
+              ></textarea>
+
+            </div>
+
+
+            <p class="form-note">
+              Clicking submit will open WhatsApp with your message already prepared.
+            </p>
+
+
+            <button
+              class="primary-button form-button"
+              type="submit"
+            >
+              Send Question on WhatsApp <span>↗</span>
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-copy">
+        © 2026 <strong>BUILD LAB</strong> by Dominic Otaigbe.<br />
+        Learn. Build. Earn.
+      </div>
+
+      <div class="footer-code">
+        BUILD / CREATE / SERVE / LEVEL UP
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- FULL OFFER MODAL -->
+  <div class="modal-overlay" id="offerModal">
+
+    <div class="modal">
+
+      <div class="modal-top">
+
+        <div>
+          <h2>The BUILD LAB Offer</h2>
+          <p>Everything included in the program.</p>
+        </div>
+
+        <button
+          class="close-modal"
+          onclick="closeOffer()"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="modal-content">
+
+        <!-- BUILD -->
+
+        <div class="curriculum-block">
+
+          <div class="curriculum-block-head">
+            <div class="curriculum-number">01.</div>
+            <h3>BUILD</h3>
+          </div>
+
+          <p>
+            Learn how to use AI to build websites and landing pages.
+          </p>
+
+          <ul>
+            <li>Build landing pages from scratch.</li>
+            <li>Build complete business websites.</li>
+            <li>Use AI to build faster.</li>
+            <li>Arrange a website properly.</li>
+            <li>Build 3D and interactive websites.</li>
+            <li>Add Meta tags to your website.</li>
+            <li>Understand design, content, structure and user experience.</li>
+          </ul>
+
+        </div>
+
+
+        <!-- CREATE -->
+
+        <div class="curriculum-block">
+
+          <div class="curriculum-block-head">
+            <div class="curriculum-number">02.</div>
+            <h3>CREATE</h3>
+          </div>
+
+          <p>
+            Build real projects and use them to create your portfolio.
+          </p>
+
+          <ul>
+            <li>Product landing pages.</li>
+            <li>Business websites.</li>
+            <li>Personal brand websites.</li>
+            <li>Sales pages.</li>
+            <li>Complete business websites.</li>
+            <li>Pick your best work and put it in a portfolio.</li>
+          </ul>
+
+        </div>
+
+
+        <!-- SERVICE -->
+
+        <div class="curriculum-block">
+
+          <div class="curriculum-block-head">
+            <div class="curriculum-number">03.</div>
+            <h3>TURN IT INTO A SERVICE</h3>
+          </div>
+
+          <p>
+            Learn how to turn your website skills into a service people will pay you for.
+          </p>
+
+          <ul>
+            <li>What service to offer.</li>
+            <li>Who needs your service.</li>
+            <li>How to package your service.</li>
+            <li>How to show your work to clients.</li>
+            <li>How to charge for your work.</li>
+            <li>How to handle changes from clients.</li>
+            <li>How to deliver work professionally.</li>
+          </ul>
+
+        </div>
+
+
+        <!-- OPPORTUNITIES -->
+
+        <div class="curriculum-block">
+
+          <div class="curriculum-block-head">
+            <div class="curriculum-number">04.</div>
+            <h3>FIND OPPORTUNITIES & LEVEL UP</h3>
+          </div>
+
+          <p>
+            Learn how to find people who need your service and get opportunities.
+          </p>
+
+          <ul>
+            <li>Find businesses that need a website.</li>
+            <li>Reach out to potential clients.</li>
+            <li>Start conversations with clients.</li>
+            <li>Show your portfolio.</li>
+            <li>Send proposals.</li>
+            <li>Follow up with clients.</li>
+            <li>Answer common questions and objections.</li>
+            <li>Get better projects as your skills improve.</li>
+            <li>Combine website building with design, video, branding, social media or marketing.</li>
+          </ul>
+
+        </div>
+
+
+        <!-- BONUSES -->
+
+        <div class="curriculum-block">
+
+          <div class="bonus-heading">
+            🎁 BUILD LAB BONUSES
+          </div>
+
+          <div class="bonus-grid">
+
+            <div class="bonus-item">
+              <h4>🎁 Bonus 01 — Website Inspiration Library</h4>
+              <p>
+                Websites and landing pages you can study whenever you need ideas.
+              </p>
+            </div>
+
+            <div class="bonus-item">
+              <h4>🎁 Bonus 02 — Ready-to-Use Templates</h4>
+              <p>
+                Templates for practice, personal projects and client work.
+              </p>
+            </div>
+
+            <div class="bonus-item">
+              <h4>🎁 Bonus 03 — Color Combination Library</h4>
+              <p>
+                Ready-made color combinations for clean and professional websites.
+              </p>
+            </div>
+
+            <div class="bonus-item">
+              <h4>🎁 Bonus 04 — Hosting Guide</h4>
+              <p>
+                Learn how to put your website online using free or affordable hosting.
+              </p>
+            </div>
+
+            <div class="bonus-item">
+              <h4>🎁 Bonus 05 — Website Resources Library</h4>
+              <p>
+                Useful resources for images, icons, fonts, assets and inspiration.
+              </p>
+            </div>
+
+            <div class="bonus-item">
+              <h4>🎁 Bonus 06 — Build & Portfolio Challenge</h4>
+              <p>
+                Build projects and turn your best work into a portfolio.
+              </p>
+            </div>
+
+            <div class="bonus-item">
+              <h4>🎁 Bonus 07 — Project Reviews & Community</h4>
+              <p>
+                Get feedback, ask questions and learn with other people building websites.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div style="margin-top: 25px;">
+
+          <a
+            href="#payment"
+            class="primary-button"
+            onclick="closeOffer()"
+          >
+            Secure My Spot at ₦5,000 <span>↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+
+  <script>
+
+    /*
+    =====================================
+    BUILD LAB SETTINGS
+    =====================================
+    */
+
+    const WHATSAPP_NUMBER = "2348059208577";
+
+    let spotsLeft = 8;
+
+    const totalSpots = 10;
+    const earlyBirdPrice = 5000;
+    const regularPrice = 10000;
+
+
+    /*
+    =====================================
+    UPDATE SPOT COUNTER
+    =====================================
+    */
+
+    function updateSpots() {
+
+      const spotsText = document.getElementById("spotsText");
+      const spotStatus = document.getElementById("spotStatus");
+      const progressBar = document.getElementById("progressBar");
+      const spotsTaken = document.getElementById("spotsTaken");
+
+      const taken = totalSpots - spotsLeft;
+
+      if (spotsLeft > 0) {
+
+        spotsText.textContent =
+          spotsLeft === 1
+            ? "1 discounted spot remaining"
+            : spotsLeft + " discounted spots remaining";
+
+        spotStatus.textContent = taken + " TAKEN";
+
+        spotsTaken.textContent =
+          taken === 1
+            ? "1 person has already joined."
+            : taken + " people have already joined.";
+
+        const percentage = (spotsLeft / totalSpots) * 100;
+
+        progressBar.style.width = percentage + "%";
+
+      } else {
+
+        spotsText.textContent = "Early-bird spots are filled";
+        spotStatus.textContent = "₦10,000 NOW";
+
+        spotsTaken.textContent =
+          "All 10 early-bird spots have been taken.";
+
+        progressBar.style.width = "0%";
+
+      }
+
+    }
+
+    updateSpots();
+
+
+    /*
+    =====================================
+    WHATSAPP PAYMENT CONFIRMATION
+    =====================================
+    */
+
+    function updatePaymentLink() {
+
+      const paymentButton =
+        document.getElementById("paymentWhatsApp");
+
+      const price =
+        spotsLeft > 0
+          ? "₦5,000"
+          : "₦10,000";
+
+      const message =
+        "Hello Dominic, I've made my " +
+        price +
+        " BUILD LAB payment. My name is ______.";
+
+      const whatsappURL =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
+
+      paymentButton.href = whatsappURL;
+
+    }
+
+    updatePaymentLink();
+
+
+    /*
+    =====================================
+    COPY ACCOUNT NUMBER
+    =====================================
+    */
+
+    function copyAccount() {
+
+      const accountNumber =
+        document.getElementById("accountNumber").textContent.trim();
+
+      navigator.clipboard.writeText(accountNumber)
+
+        .then(function() {
+          showToast("Account number copied.");
+        })
+
+        .catch(function() {
+          showToast("Please copy the account number manually.");
+        });
+
+    }
+
+
+    /*
+    =====================================
+    OFFER MODAL
+    =====================================
+    */
+
+    const offerModal =
+      document.getElementById("offerModal");
+
+
+    function openOffer() {
+
+      offerModal.classList.add("open");
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeOffer() {
+
+      offerModal.classList.remove("open");
+      document.body.style.overflow = "";
+
+    }
+
+
+    offerModal.addEventListener("click", function(event) {
+
+      if (event.target === offerModal) {
+        closeOffer();
+      }
+
+    });
+
+
+    document.addEventListener("keydown", function(event) {
+
+      if (event.key === "Escape") {
+        closeOffer();
+      }
+
+    });
+
+
+    /*
+    =====================================
+    FAQ ACCORDION
+    =====================================
+    */
+
+    const faqQuestions =
+      document.querySelectorAll(".faq-question");
+
+
+    faqQuestions.forEach(function(question) {
+
+      question.addEventListener("click", function() {
+
+        const item = question.parentElement;
+        const answer = item.querySelector(".faq-answer");
+
+        document.querySelectorAll(".faq-item").forEach(function(otherItem) {
+
+          if (otherItem !== item) {
+
+            otherItem.classList.remove("active");
+
+            otherItem.querySelector(".faq-answer").style.maxHeight = null;
+
+          }
+
+        });
+
+
+        item.classList.toggle("active");
+
+
+        if (item.classList.contains("active")) {
+
+          answer.style.maxHeight = answer.scrollHeight + "px";
+
+        } else {
+
+          answer.style.maxHeight = null;
+
+        }
+
+      });
+
+    });
+
+
+    /*
+    =====================================
+    SCROLL TO QUESTIONS
+    =====================================
+    */
+
+    function scrollToQuestions() {
+
+      const questionSection =
+        document.getElementById("questions");
+
+      questionSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
+
+
+    /*
+    =====================================
+    WHATSAPP QUESTION FORM
+    =====================================
+    */
+
+    const questionForm =
+      document.getElementById("questionForm");
+
+
+    questionForm.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const question =
+        document.getElementById("question").value.trim();
+
+
+      if (!name || !phone || !question) {
+
+        showToast("Please complete all the fields.");
+
+        return;
+
+      }
+
+
+      const message =
+        "Hello Dominic, my name is " +
+        name +
+        ". My WhatsApp number is " +
+        phone +
+        ". My question about BUILD LAB is: " +
+        question;
+
+
+      const whatsappURL =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+      window.open(whatsappURL, "_blank");
+
+      questionForm.reset();
+
+    });
+
+
+    /*
+    =====================================
+    TOAST MESSAGE
+    =====================================
+    */
+
+    let toastTimer;
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(function() {
+
+        toast.classList.remove("show");
+
+      }, 2500);
+
+    }
+
+
+    /*
+    =====================================
+    CLOSE MODAL WHEN CLICKING PAYMENT LINK
+    =====================================
+    */
+
+    document.querySelectorAll('a[href="#payment"]').forEach(function(link) {
+
+      link.addEventListener("click", function() {
+
+        closeOffer();
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
